@@ -1,0 +1,15 @@
+{
+  "short_name": "Job Listing",
+  "name": "job-listings-with-filtering",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "size": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
