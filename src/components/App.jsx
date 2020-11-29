@@ -22,10 +22,14 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline>
 				<Container className="app">
-					<h1>Job Listings</h1>
-					<Grid container className="job-listings">
+					<Grid
+						container
+						className="job-listings"
+						justify="center"
+						spacing={5}
+					>
 						{jobs.map((job) => (
-							<Grid item key={job.id}>
+							<Grid item key={job.id} xs={10}>
 								<JobCard job={job} />
 							</Grid>
 						))}
