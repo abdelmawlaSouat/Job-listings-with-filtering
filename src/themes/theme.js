@@ -1,10 +1,10 @@
-/*
+/**
  * theme.js
  *
- * Author: Abdelmawla Souat (abdelmawla.souat@gmail.com)
- * Created on 2020/11/27 15:37:33
+ * @author Abdelmawla Souat <abdelmawla.souat@gmail.com>
  *
- * Copyright (c) 2020 Shuriken
+ * Created at     : 2020-11-27 15:37:33
+ * Last modified  : 2020-12-23 15:06:40
  */
 
 import { createMuiTheme } from '@material-ui/core/styles'

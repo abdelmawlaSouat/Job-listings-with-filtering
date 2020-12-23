@@ -1,22 +1,17 @@
-/*
+/**
  * JobCard.jsx
  *
- * Author: Abdelmawla Souat (abdelmawla.souat@gmail.com)
- * Created on 2020/11/28 16:06:28
+ * @author Abdelmawla Souat <abdelmawla.souat@gmail.com>
  *
- * Copyright (c) 2020 Shuriken
+ * Created at     : 2020-11-28 16:06:28
+ * Last modified  : 2020-12-23 15:06:01
  */
 
-import {
-	Box,
-	Button,
-	Card,
-	Chip,
-	makeStyles,
-	Typography,
-} from '@material-ui/core'
+import { Box, Card, makeStyles } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
+import JobInfos from './JobInfos'
+import JobCardFilters from './JobCardFilters'
 
 const useStyles = makeStyles((theme) => ({
 	// Position
@@ -44,15 +39,12 @@ const useStyles = makeStyles((theme) => ({
 function JobCard({ job }) {
 	const classes = useStyles()
 
-	const filters = [
-		job.role,
-		job.level,
-		...job.languages,
-		...job.tools,
-	].map((filter) => ({
-		idx: Math.floor(Math.random() * 1000),
-		value: filter,
-	}))
+	const filters = [job.role, job.level, ...job.languages, ...job.tools].map(
+		(filter, idx) => ({
+			idx: Date.now() + idx,
+			value: filter,
+		})
+	)
 
 	return (
 		<Card
@@ -63,97 +55,38 @@ function JobCard({ job }) {
 				classes.borderLeft
 			)}
 		>
-			<Box
-				className="card-box"
-				display="flex"
-				justifyContent="space-between"
-			>
-				<Box display="flex">
-					<img
-						src={`./images/companies/${job.logo}`}
-						alt="Logo Company"
-					/>
-					<Box className={classes.ml1}>
-						<Box display="flex">
-							<Typography
-								variant="body2"
-								className={clsx(classes.mr05, classes.fontWeight550)}
-							>
-								{job.company}
-							</Typography>
-							{job.new && (
-								<Chip
-									label="NEW!"
-									className={clsx(
-										classes.cyanBg,
-										classes.whiteColor,
-										classes.fontSize076,
-										classes.mr05,
-										classes.fontWeight550
-									)}
-									size="small"
-								/>
-							)}
-							{job.featured && (
-								<Chip
-									label="FEATURED"
-									className={clsx(
-										classes.darkBg,
-										classes.whiteColor,
-										classes.fontSize076,
-										classes.fontWeight550
-									)}
-									size="small"
-								/>
-							)}
-						</Box>
-						<Typography
-							variant="h6"
-							className={clsx(
-								classes.darkColor,
-								classes.fontWeight550
-							)}
-						>
-							{job.position}
-						</Typography>
-						<Box display="flex" className={classes.greyColor}>
-							<Typography className={classes.pr05}>
-								{job.postedAt}
-							</Typography>
-							<Typography className={classes.pr05}>-</Typography>
-							<Typography className={classes.pr05}>
-								{job.contract}
-							</Typography>
-							<Typography className={classes.pr05}>-</Typography>
-							<Typography className={classes.pr05}>
-								{job.location}
-							</Typography>
-						</Box>
-					</Box>
-				</Box>
-
-				<Box display="flex" flexWrap="wrap" alignItems="center">
-					{filters.map((filter) => (
-						<Button
-							key={filter.idx}
-							className={clsx(
-								classes.fontWeight550,
-								classes.lightCyan,
-								classes.noTextTransform,
-								classes.mr05
-							)}
-						>
-							{filter.value}
-						</Button>
-					))}
-				</Box>
+			<Box className="card-box" display="flex" justifyContent="space-between">
+				<JobInfos job={job} classes={classes} />
+				<JobCardFilters
+					filters={filters}
+					classes={clsx(
+						classes.fontWeight550,
+						classes.lightCyan,
+						classes.noTextTransform,
+						classes.mr05
+					)}
+				/>
 			</Box>
 		</Card>
 	)
 }
 
-JobCard.protoTypes = {
-	job: PropTypes.object.isRequired,
+JobCard.propTypes = {
+	job: PropTypes.shape({
+		id: PropTypes.number,
+		company: PropTypes.string,
+		logo: PropTypes.string,
+		new: PropTypes.bool,
+		featured: PropTypes.bool,
+		position: PropTypes.string,
+		role: PropTypes.string,
+		level: PropTypes.string,
+		postedAt: PropTypes.string,
+		contract: PropTypes.string,
+		location: PropTypes.string,
+		languages: PropTypes.arrayOf(PropTypes.string),
+		tools: PropTypes.arrayOf(PropTypes.string),
+	}).isRequired,
 }
 
 export default JobCard
