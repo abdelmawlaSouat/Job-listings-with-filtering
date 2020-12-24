@@ -2,7 +2,7 @@
 
 Hosted on Vercel
 
-Job Listings Challenge from [Frontend Mentor](https://www.frontendmentor.io/)
+Job Listings Challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
 
 ## [Demo]()
 
