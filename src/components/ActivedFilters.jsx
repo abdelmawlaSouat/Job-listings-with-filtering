@@ -15,6 +15,7 @@ import {
 	Button,
 	makeStyles,
 } from '@material-ui/core'
+import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import ClearIcon from '@material-ui/icons/Clear'
 
@@ -79,6 +80,14 @@ function ActivedFilters({ activedFilters, clearFilter, removeFilter }) {
 			</Grid>
 		</Card>
 	)
+}
+
+ActivedFilters.propTypes = {
+	activedFilters: PropTypes.arrayOf(
+		PropTypes.shape({ idx: PropTypes.number, value: PropTypes.string })
+	).isRequired,
+	clearFilter: PropTypes.func.isRequired,
+	removeFilter: PropTypes.func.isRequired,
 }
 
 export default ActivedFilters

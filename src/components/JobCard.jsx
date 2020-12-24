@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 			color: 'white',
 		},
 	},
-	// boxShadow: { boxShadow: '0px 2px 2px 1px hsl(180, 52%, 96%)' },
 }))
 
 function JobCard({ job, addFilter }) {
@@ -54,14 +53,7 @@ function JobCard({ job, addFilter }) {
 	)
 
 	return (
-		<Card
-			className={clsx(
-				classes.whiteBg,
-				classes.pa2_5,
-				// classes.boxShadow,
-				classes.borderLeft
-			)}
-		>
+		<Card className={clsx(classes.whiteBg, classes.pa2_5, classes.borderLeft)}>
 			<Grid container className="Job-card" justify="space-between" spacing={2}>
 				<Grid item xs={12} md={6}>
 					<JobInfos job={job} classes={classes} />
@@ -85,6 +77,7 @@ function JobCard({ job, addFilter }) {
 }
 
 JobCard.propTypes = {
+	addFilter: PropTypes.func.isRequired,
 	job: PropTypes.shape({
 		id: PropTypes.number,
 		company: PropTypes.string,

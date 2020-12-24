@@ -10,7 +10,7 @@
 import PropTypes from 'prop-types'
 import { Box, Button } from '@material-ui/core'
 
-export default function JobCardFilters({ filters, addFilter, classes }) {
+function JobCardFilters({ filters, addFilter, classes }) {
 	return (
 		<Box display="flex" flexWrap="wrap">
 			{filters.map((filter) => (
@@ -29,6 +29,11 @@ JobCardFilters.defaultProps = {
 }
 
 JobCardFilters.propTypes = {
-	filters: PropTypes.instanceOf(Array).isRequired,
+	filters: PropTypes.arrayOf(
+		PropTypes.shape({ idx: PropTypes.number, value: PropTypes.string })
+	).isRequired,
+	addFilter: PropTypes.func.isRequired,
 	classes: PropTypes.string,
 }
+
+export default JobCardFilters
