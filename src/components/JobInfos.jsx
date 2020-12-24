@@ -4,7 +4,7 @@
  * @author Abdelmawla Souat <abdelmawla.souat@gmail.com>
  *
  * Created at     : 2020-12-23 12:21:46
- * Last modified  : 2020-12-23 19:08:00
+ * Last modified  : 2020-12-24 11:08:48
  */
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -37,8 +37,8 @@ function JobInfos({ job, classes }) {
 	)
 
 	return (
-		<Grid container spacing={1}>
-			<Grid item md={2}>
+		<Grid container>
+			<Grid item md={3} lg={2}>
 				<img
 					className={localClasses.logo}
 					src={`./images/companies/${job.logo}`}
@@ -46,7 +46,7 @@ function JobInfos({ job, classes }) {
 				/>
 			</Grid>
 
-			<Grid item md={6}>
+			<Grid item md={8}>
 				<Grid container spacing={1}>
 					<Grid item xs={12}>
 						<Box display="flex">
