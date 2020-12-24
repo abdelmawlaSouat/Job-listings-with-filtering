@@ -4,7 +4,7 @@
  * @author Abdelmawla Souat <abdelmawla.souat@gmail.com>
  *
  * Created at     : 2020-11-25 23:55:05
- * Last modified  : 2020-12-23 22:44:46
+ * Last modified  : 2020-12-24 10:47:08
  */
 
 import { useState } from 'react'
@@ -15,6 +15,7 @@ import theme from '../themes/theme'
 import jobs from '../data/jobs.json'
 import ActivedFilters from './ActivedFilters'
 import JobCard from './JobCard'
+import Footer from './Footer'
 
 const useStyles = makeStyles(() => ({
 	header: {
@@ -88,6 +89,9 @@ function App() {
 						>
 							{jobs.map((job) => filterJob(job))}
 						</Grid>
+					</Grid>
+					<Grid item>
+						<Footer />
 					</Grid>
 				</Grid>
 			</CssBaseline>
