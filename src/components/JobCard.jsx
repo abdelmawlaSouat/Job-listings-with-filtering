@@ -4,7 +4,7 @@
  * @author Abdelmawla Souat <abdelmawla.souat@gmail.com>
  *
  * Created at     : 2020-11-28 16:06:28
- * Last modified  : 2020-12-23 19:08:47
+ * Last modified  : 2020-12-23 22:03:19
  */
 
 import { Grid, Card, makeStyles } from '@material-ui/core'
@@ -34,10 +34,16 @@ const useStyles = makeStyles((theme) => ({
 	fontWeight550: { fontWeight: '550' },
 	fontSize076: { fontSize: '0.75rem' },
 	noTextTransform: { textTransform: 'none' },
+	btnHover: {
+		'&:hover': {
+			background: 'hsl(180, 29%, 50%)',
+			color: 'white',
+		},
+	},
 	// boxShadow: { boxShadow: '0px 2px 2px 1px hsl(180, 52%, 96%)' },
 }))
 
-function JobCard({ job }) {
+function JobCard({ job, addFilter }) {
 	const classes = useStyles()
 
 	const filters = [job.role, job.level, ...job.languages, ...job.tools].map(
@@ -52,7 +58,7 @@ function JobCard({ job }) {
 			className={clsx(
 				classes.whiteBg,
 				classes.pa2_5,
-				classes.boxShadow,
+				// classes.boxShadow,
 				classes.borderLeft
 			)}
 		>
@@ -63,7 +69,9 @@ function JobCard({ job }) {
 				<Grid item xs={12} md={4}>
 					<JobCardFilters
 						filters={filters}
+						addFilter={addFilter}
 						classes={clsx(
+							classes.btnHover,
 							classes.fontWeight550,
 							classes.lightCyan,
 							classes.noTextTransform,
