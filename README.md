@@ -4,7 +4,7 @@ Hosted on Vercel
 
 Job Listings Challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
 
-## [Demo]()
+## [Demo](https://job-listings-with-filtering-mu.vercel.app/)
 
 ![Preview](./design/desktop-preview.jpg)
 
